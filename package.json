@@ -1,0 +1,11 @@
+{
+  "name": "gulp_front_end_project_8",
+  "version": "1.0.0",
+  "description": "Treehouse FullStack JS TechDegree Project 8",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Underwood",
+  "license": "ISC"
+}
