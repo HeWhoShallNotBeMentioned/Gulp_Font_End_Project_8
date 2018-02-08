@@ -29,7 +29,7 @@ _{
 ## Setup/Installation Requirements
 
 * _Download files to your local computer_
-* _Go to that location via your commmand line tool_
+* _Go to that location via your command line tool_
 * _run npm install_
 * _the following commands are available_
 * _gulp - to build the production files, remove production files, start the server, & watch for sass changes_
@@ -51,7 +51,7 @@ _{cunderwoodmn [at] gmail {dot} com}_
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+_{Gulp, browser_sync, gulp-concat, gulp-sourcemaps, gulp-sass, gulp-uglify, gulp-rename, gulp-clean-css, del, gulp-image, run-sequence, gulp-connect,  Node.js}_
 
 ### License
 
