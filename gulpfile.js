@@ -11,7 +11,7 @@ const del     = require('del');
 const image   = require('gulp-image');
 const runSeq  = require('run-sequence');
 const connect = require('gulp-connect');
-
+const brwSync = require("browser-sync").create();
 
 gulp.task('scripts', function () {
   gulp.src([
@@ -32,7 +32,8 @@ gulp.task("styles", function(){
   .pipe(minCSS({compatibility: 'ie8'}))
   .pipe(rename('app.min.css'))
   .pipe(maps.write('./'))
-  .pipe(gulp.dest('dist/styles'));
+  .pipe(gulp.dest('dist/styles'))
+  .on("end", brwSync.reload);
 });
 
 gulp.task('images', function () {
@@ -46,8 +47,18 @@ gulp.task('images', function () {
 //   .pipe(gulp.dest('dist/'));
 // });
 
-gulp.task('watch', function(){
-  gulp.watch('./sass/**/*.scss', ['styles']);
+// gulp.task('watch', function(){
+//
+//   gulp.watch('./sass/**/*.scss', ['styles']);
+//
+// });
+
+gulp.task('browser-sync', function() {
+    brwSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
 });
 
 gulp.task('clean', function (){
@@ -55,12 +66,13 @@ gulp.task('clean', function (){
 });
 
 gulp.task('build', function() {
-  return runSeq('clean', ['scripts', 'styles', 'images']);
+  return runSeq('clean', ['scripts', 'styles', 'images'],'browser-sync');
     });
 
 gulp.task('default', function() {
   gulp.start('build');
-  gulp.watch('./sass/**/*.scss', ['styles']);
+
+  gulp.watch('./sass/**/*.scss', ['styles']).on('change', brwSync.reload);
   connect.server({port: 3000});
   console.log("Default Gulp function has run.");
 });
