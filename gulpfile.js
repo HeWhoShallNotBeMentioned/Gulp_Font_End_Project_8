@@ -9,6 +9,7 @@ const rename  = require('gulp-rename');
 const minCSS  = require('gulp-clean-css');
 const del     = require('del');
 const image   = require('gulp-image');
+const runSeq  = require('run-sequence');
 // gulp.task();
 
 gulp.task('scripts', function () {
@@ -34,15 +35,19 @@ gulp.task("styles", function(){
 });
 
 gulp.task('images', function () {
-  gulp.src('./images/*')
+  return gulp.src('./images/*')
     .pipe(image())
     .pipe(gulp.dest('dist/content'));
 });
 
 
 gulp.task('clean', function (){
-  del(['dist']);
+  return del(['dist']);
 });
+
+gulp.task('build', function() {
+  return runSeq('clean', ['scripts', 'styles', 'images']);
+    });
 
 gulp.task('default', function() {
 
