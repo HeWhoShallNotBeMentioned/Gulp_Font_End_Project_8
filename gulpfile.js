@@ -46,6 +46,9 @@ gulp.task('images', function () {
 //   .pipe(gulp.dest('dist/'));
 // });
 
+gulp.task('watch', function(){
+  gulp.watch('./sass/**/*.scss', ['styles']);
+});
 
 gulp.task('clean', function (){
   return del(['dist']);
@@ -57,6 +60,7 @@ gulp.task('build', function() {
 
 gulp.task('default', function() {
   gulp.start('build');
+  gulp.watch('./sass/**/*.scss', ['styles']);
   connect.server({port: 3000});
   console.log("Default Gulp function has run.");
 });
