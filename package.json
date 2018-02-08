@@ -2,15 +2,20 @@
   "name": "gulp_front_end_project_8",
   "version": "1.0.0",
   "description": "Treehouse FullStack JS TechDegree Project 8",
-  "main": "app.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chris Underwood",
   "license": "ISC",
   "devDependencies": {
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0"
   }
 }
