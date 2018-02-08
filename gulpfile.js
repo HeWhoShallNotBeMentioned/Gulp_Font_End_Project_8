@@ -10,7 +10,8 @@ const minCSS  = require('gulp-clean-css');
 const del     = require('del');
 const image   = require('gulp-image');
 const runSeq  = require('run-sequence');
-// gulp.task();
+const connect = require('gulp-connect');
+
 
 gulp.task('scripts', function () {
   gulp.src([
@@ -40,6 +41,11 @@ gulp.task('images', function () {
     .pipe(gulp.dest('dist/content'));
 });
 
+// gulp.task('moveIndex', function(){
+//   return gulp.src('./index.html')
+//   .pipe(gulp.dest('dist/'));
+// });
+
 
 gulp.task('clean', function (){
   return del(['dist']);
@@ -51,5 +57,6 @@ gulp.task('build', function() {
 
 gulp.task('default', function() {
   gulp.start('build');
+  connect.server({port: 3000});
   console.log("Default Gulp function has run.");
 });
