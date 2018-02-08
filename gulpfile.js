@@ -33,7 +33,7 @@ gulp.task("styles", function(){
   .pipe(rename('app.min.css'))
   .pipe(maps.write('./'))
   .pipe(gulp.dest('dist/styles'))
-  .on("end", brwSync.reload);
+  .pipe(brwSync.stream());
 });
 
 gulp.task('images', function () {
@@ -71,7 +71,6 @@ gulp.task('build', function() {
 
 gulp.task('default', function() {
   gulp.start('build');
-
   gulp.watch('./sass/**/*.scss', ['styles']).on('change', brwSync.reload);
   connect.server({port: 3000});
   console.log("Default Gulp function has run.");
