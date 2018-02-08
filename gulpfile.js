@@ -50,6 +50,6 @@ gulp.task('build', function() {
     });
 
 gulp.task('default', function() {
-
+  gulp.start('build');
   console.log("Default Gulp function has run.");
 });
